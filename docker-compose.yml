@@ -1,25 +1,26 @@
-version: "2"
-services:
-    wordpress:
-        build: ./my-wordpress
-        ports:
-            - "9000:80"
-        depends_on:
-            - db
-        environment:
-            WORDPRESS_DB_HOST: "db:3306"
-        env_file: .env
-        volumes:
-            - ./themes/sage:/var/www/html/wp-content/themes/sage
-    db:
-        image: mysql:latest
-        env_file: .env
-        volumes:
-            - "db-data:/var/lib/mysql"
-            - "./install_wordpress.sql:/docker-entrypoint-initdb.d/install_wordpress.sql"
+version: '2'
 
-# databaseのように永続的なストレージが欲しい場合に必要な設定
-# https://docs.docker.com/compose/compose-file/#volume-configuration-reference
+services:
+   db:
+     image: mysql:5.7
+     volumes:
+       - db_data:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: wordpress
+       MYSQL_DATABASE: wordpress
+       MYSQL_USER: wordpress
+       MYSQL_PASSWORD: wordpress
+
+   wordpress:
+     depends_on:
+       - db
+     image: wordpress:latest
+     ports:
+       - "8000:80"
+     restart: always
+     environment:
+       WORDPRESS_DB_HOST: db:3306
+       WORDPRESS_DB_PASSWORD: wordpress
 volumes:
-    db-data:
-        driver: local
+    db_data:
