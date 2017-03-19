@@ -22,4 +22,4 @@
 ```
 git remote set-url --add origin git@git:~
 ```
-sourcetree push test05
+sourcetree push test06
