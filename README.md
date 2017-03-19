@@ -1,3 +1,13 @@
+## VPSユーザー作成
+useradd hogehoge
+passwd sagesage
+usermod -G wheel hogehoge
+
+## 鍵認証
+ローカル　→　VPS
+ssh-add
+
+
 ## git 共用リポジトリ作成
 
 ```
@@ -17,9 +27,12 @@
 # echo "Description of this repo" > description
 ```
 
-同時プッシュ用Githubレポジストリの登録
+### VPSの作業ディレクトリパーミッション
+
+chown apache:gitusers html
+
+### 同時プッシュ用Githubレポジストリの登録
 
 ```
 git remote set-url --add origin git@git:~
 ```
-sourcetree push test07
