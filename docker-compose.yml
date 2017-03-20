@@ -10,9 +10,9 @@ services:
      env_file: .env
 
    wordpress:
+     build: ./my-wordpress
      depends_on:
        - db
-     image: wordpress:latest
      ports:
        - "8000:80"
      restart: always
