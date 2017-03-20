@@ -36,4 +36,4 @@ chown apache:gitusers html
 ```
 git remote set-url --add origin git@git:~
 ```
-プッシュテスト04
+プッシュテスト05
