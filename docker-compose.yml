@@ -23,3 +23,4 @@ services:
        - ./themes/forestone-modan-theme:/var/www/html/wp-content/themes/forestone-modan-theme
 volumes:
     db_data:
+        driver: local

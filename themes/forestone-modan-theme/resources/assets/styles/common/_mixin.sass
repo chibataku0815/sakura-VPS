@@ -1,0 +1,20 @@
+=vender($property, $value)
+  @each $prefix in -webkit-, -moz-, -ms-, -o-, -js-, ''
+    #{$prefix}#{$property}: $value
+
+=material-icons
+  font-family: 'Material Icons'
+  -webkit-font-smoothing: antialiased
+  text-rendering: optimizeLegibility
+  -moz-osx-font-smoothing: grayscale
+  font-feature-settings: 'liga'
+
+=gradient-top-lighten($color: $hoge, $lighten: 10)
+  background-color: $color
+
+  +background-image(linear-gradient(lighten($color, $lighten) 0%, $color 100%))
+
+=gradient-top-darken($color: $hoge, $darken: 10)
+  background-color: $color
+
+  +background-image(linear-gradient(darken($color, $darken) 0%, $color 100%))
